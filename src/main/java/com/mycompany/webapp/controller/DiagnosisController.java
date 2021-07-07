@@ -62,6 +62,7 @@ public class DiagnosisController {
 	@GetMapping("/patientlist")
 	public List<Patient> patientList(String day){
 		List<Patient> list = diagnosisService.getPatientList(day);
+		
 		return list;
 	}
 	
@@ -104,6 +105,7 @@ public class DiagnosisController {
 		d.setComment(diagnosis.getComment());
 		d.setTotalIstatus("대기");
 		d.setReceptionId(diagnosis.getReceptionId());
+		System.out.println(diagnosis.getReceptionId());
 		diagnosisService.addDiagnosis(d);
 		
 		String currentDid = diagnosisService.getCurrentDid();

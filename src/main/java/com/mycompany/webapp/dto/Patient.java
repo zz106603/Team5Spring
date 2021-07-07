@@ -14,8 +14,17 @@ public class Patient {
 	private String address;
 	private String addressDetail;
 
+	private String rId;
+	
 
 
+	
+	public String getrId() {
+		return rId;
+	}
+	public void setrId(String rId) {
+		this.rId = rId;
+	}
 	public String getPatientId() {
 		return patientId;
 	}
