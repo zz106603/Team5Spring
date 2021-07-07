@@ -12,5 +12,7 @@
      <typeAlias type="com.mycompany.webapp.dto.Doctor" alias="doctor"/>
      <typeAlias type="com.mycompany.webapp.dto.Reception" alias="reception"/>
      <typeAlias type="com.mycompany.webapp.dto.MainBoard" alias="mainBoard"/>
+     <typeAlias type="com.mycompany.webapp.dto.InspectPatient" alias="InspectPatient"/>
+     <typeAlias type="com.mycompany.webapp.dto.DiagnosisInspection" alias="diagnosisInspection"/> 
    </typeAliases>
 </configuration>

@@ -3,16 +3,15 @@
  
 <mapper namespace="com.mycompany.webapp.dao.BoardDAO">
  
-    <select id="selectAll" resultType="board">
-		SELECT 
-			notice_id,
-			notice_title,
-			notice_content,
-			notice_regdate,
-			user_id
-		FROM
-			notice
-	</select>
+    <select resultType="board" id="selectAll">
+	    SELECT
+		    notice_id AS noticeId,
+		    notice_title AS noticeTitle,
+		    notice_content AS noticeContent,
+		    notice_regdate AS noticeRegdate,
+		    user_id AS userId
+	    FROM notice 
+    </select>
 	
 	 <select id="selectMainNotice" resultType="mainBoard">
       SELECT 

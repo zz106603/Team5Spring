@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.mycompany.webapp.dao.InspectDAO">
+ 
+
+
+    
+    <select id="IpatientList" resultType="InspectPatient">
+		SELECT 
+			p.patient_id as patientId,
+			patient_name as patientName,
+			patient_sex as patientSex,
+			patient_age as patientAge,
+			i_date as iDate,
+			total_i_status as totalIstatus,
+			d.d_id as dID
+		FROM
+			diagnosis d,reception r ,patient p
+		WHERE d.r_id = r.r_id and r.patient_id = p.patient_id and d_status="완료" and
+		i_date BETWEEN date_format(sysdate(),"%Y-%m-%d 09:00:00") and date_format(sysdate(),"%Y-%m-%d 23:59:59")
+		ORDER BY i_date
+	</select> 
+	
+	  <select id="InspectList" resultType="diagnosisInspection" parameterType="String">
+	   select  patient_id as patientId, bundle_code as bundleCode, i_id as iId, i_name as iName, i_unit as iUnit, i_status as iStatus, inspector,d_id as dId
+      from(select  di.patient_id as patient_id, 
+               i.bundle_code as bundle_code, 
+                    di.i_id as i_id, 
+                    i.i_name as i_name, 
+                    i.i_unit as i_unit, 
+                    di.i_status as i_status,
+                    i.inspector as inspector,
+                    di.d_id as d_id
+      from diagnosis_has_inspection di, inspection i
+      where di.i_id = i.i_id and di.bundle_code = i.bundle_code) t
+      where t.patient_id = #{pno} and t.d_id=#{did}
+      ORDER BY bundleCode;
+	</select>
+	
+	<update id="updateInspectStatus" >
+		update diagnosis_has_inspection 
+		set i_status=#{changeValue}
+		where i_id=#{iId} and bundle_code =#{bundleCode}
+	</update>
+	
+		<update id="updateInspectPstatus" >
+		update diagnosis 
+		set total_i_status=#{totalIstatus}
+		where d_id=#{dId}
+	</update>
+	
+	
+    
+</mapper>

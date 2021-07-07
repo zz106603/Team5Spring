@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.mycompany.webapp.dao.ReceptionDAO">
+ 
+    <select id="selectAll" parameterType="string" resultType="reception" >
+		SELECT 
+			r.r_id AS rId,			
+			r.r_date AS rDate,			
+			r.r_time AS rTime,			
+			r.r_status AS rStatus,			
+			r.doctor_id AS doctorId,			
+			r.patient_id AS patientId,
+			i.patient_name AS patientName,
+			i.patient_ssn1 AS patientSsn1,
+			i.patient_phone AS patientPhone
+		FROM
+			reception r, patient i
+		WHERE r.r_date=#{day} and i.patient_id = r.patient_id  
+		ORDER BY r.r_id DESC
+	</select>
+    
+    <delete id="deletePatient" parameterType="int" >
+		DELETE FROM reception WHERE r_id=#{cancelId}; 
+	</delete>
+	
+	<update id="changePatient" parameterType="int" >
+		UPDATE reception SET r_status='접수완료' WHERE r_id=#{changeID} 
+	</update>
+	
+	<select id="countWating" parameterType="string" resultType="int">
+		SELECT count(*) FROM reception WHERE r_status='접수대기' and r_date=#{day}
+	</select>
+	
+	<select id="countComplete" parameterType="string" resultType="int">
+		SELECT count(*) FROM reception WHERE r_status='접수완료' and r_date=#{day}
+	</select>
+	
+	<insert id="registerPatient" parameterType="patient">
+		INSERT INTO patient 
+		(patient_id, patient_name, patient_age, patient_sex, patient_ssn1, patient_ssn2, patient_phone, patient_zip, address, address_detail) 
+		VALUES 
+		(#{patientId}, #{patientName}, #{patientAge}, #{patientSex}, #{patientSsn1}, #{patientSsn2}, #{patientPhone}, #{patientZip}, #{address}, #{addressDetail});
+	</insert>
+	
+	<select id="getLastId" resultType="string">
+		SELECT patient_id FROM patient ORDER BY patient_id DESC limit 1;
+	</select>
+	
+	<select id="countRday" parameterType="string" resultType="int" >
+		SELECT count(*) FROM reception WHERE r_date=#{day}
+	</select>
+	
+</mapper>

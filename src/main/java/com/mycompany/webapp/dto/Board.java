@@ -3,42 +3,43 @@ package com.mycompany.webapp.dto;
 import java.util.Date;
 
 public class Board {
-	private int notice_id;
-	private String notice_title;
-	private String notice_content;
-	private Date notice_regdate;
-	private String user_id;
+	private int noticeId;
+	private String noticeTitle;
+	private String noticeContent;
+	private Date noticeRegdate;
+	private String userId;
 	
-	public int getNotice_id() {
-		return notice_id;
+	public int getNoticeId() {
+		return noticeId;
 	}
-	public void setNotice_id(int notice_id) {
-		this.notice_id = notice_id;
+	public void setNoticeId(int noticeId) {
+		this.noticeId = noticeId;
 	}
-	public String getNotice_title() {
-		return notice_title;
+	public String getNoticeTitle() {
+		return noticeTitle;
 	}
-	public void setNotice_title(String notice_title) {
-		this.notice_title = notice_title;
+	public void setNoticeTitle(String noticeTitle) {
+		this.noticeTitle = noticeTitle;
 	}
-	public String getNotice_content() {
-		return notice_content;
+	public String getNoticeContent() {
+		return noticeContent;
 	}
-	public void setNotice_content(String notice_content) {
-		this.notice_content = notice_content;
+	public void setNoticeContent(String noticeContent) {
+		this.noticeContent = noticeContent;
 	}
-	public Date getNotice_regdate() {
-		return notice_regdate;
+	public Date getNoticeRegdate() {
+		return noticeRegdate;
 	}
-	public void setNotice_regdate(Date notice_regdate) {
-		this.notice_regdate = notice_regdate;
+	public void setNoticeRegdate(Date noticeRegdate) {
+		this.noticeRegdate = noticeRegdate;
 	}
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
+	
 	
 	
 }
