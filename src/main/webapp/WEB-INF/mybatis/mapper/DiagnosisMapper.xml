@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.mycompany.webapp.dao.DiagnosisDAO">
+ 
+    <select id="medicineSelectAll" resultType="medicine">
+		SELECT 
+			m_id as mId,
+			m_name as mName,
+			m_category as mCategory,
+			m_unit as mUnit
+		FROM
+			medicine
+	</select>
+	
+	<select id="inspectionSelectAll" resultType="inspection">
+		SELECT 
+			bundle_code as bundleCode,
+			bundle_name as bundleName
+		FROM
+			bundle
+	</select>
+	
+	<select id="inspectionListAll" resultType="inspection">
+		SELECT 
+			i_id as iId,
+			i_name as iName,
+			i_unit as iUnit,
+			bundle_code as bundleCode
+		FROM
+			inspection
+	</select>
+	
+	<select id="patientList" resultType="patient" parameterType="String"> 
+		SELECT 
+			p.patient_id as patientId, 
+			p.patient_name as patientName, 
+			p.patient_ssn1 as patientSsn1, 
+			p.patient_phone as patientPhone,
+			r.r_id as rId
+		FROM reception r, patient p
+		WHERE 
+			r.r_date = #{day} 
+		AND 
+			p.patient_id = r.patient_id;
+			
+	</select>
+	
+	<select id="pastRecordList" resultType="diagnosis">
+		 SELECT 
+		 	t.d_date as dDate
+    	from(
+			SELECT r.patient_id, d_date
+			FROM diagnosis d, reception r
+			WHERE d.r_id = r.r_id
+    	) t
+    	WHERE 
+    		t.patient_id = #{pId}
+    	ORDER BY
+    		t.d_date ASC;
+	</select>
+	
+	<select id="selectPatient" resultType="patient">
+		SELECT 
+		 	patient_id as patientId,
+		 	patient_Name as patientName,
+		 	patient_ssn1 as patientSsn1
+    	FROM
+    		patient
+    	WHERE 
+    		patient_id = #{pId}
+	</select>
+	
+	
+	<select id="pastRecordIlist" resultType="diagnosis">
+		SELECT 
+			i.i_id as iId, 
+			i.i_name as iName, 
+			i.inspector as inspector, 
+			dd.i_result as iResult
+		FROM
+			(SELECT 
+					di.i_id as i_id, 
+					di.i_result as i_result, 
+					di.bundle_code as bundle_code
+			FROM
+				(SELECT 
+						d_id
+				 FROM 
+						diagnosis
+				 WHERE 
+						d_date = #{day}
+				) d, diagnosis_has_inspection di 
+			WHERE 
+				d.d_id = di.d_id AND di.patient_id=#{pId}
+			) dd, inspection i
+		WHERE 
+			dd.i_id = i.i_id 
+		AND 
+			dd.bundle_code = i.bundle_code;
+	</select>
+	
+	<select id="pastRecordMlist" resultType="medicine">
+		SELECT 
+			m.m_id as mId, 
+			m.m_name as mName, 
+			m.m_category mCategory, 
+			m.m_unit mUnit
+		FROM(
+			SELECT md.m_id
+			FROM(
+				select d_id
+				from diagnosis d
+				where d.d_date = #{day}
+			) d, medicine_has_diagnosis md
+			WHERE 
+				d.d_id = md.d_id 
+			AND 
+				md.p_id = #{pId}
+		) t, medicine m
+		WHERE 
+			t.m_id = m.m_id
+	</select>
+	
+	<select id="pastRecordMemo" resultType="diagnosis">
+		SELECT d.comment as comment
+		FROM (
+			SELECT 
+				d.r_id, 
+				d.comment
+			FROM 
+				diagnosis d 
+			WHERE 
+				d.d_date = #{day}
+		) d, reception r
+		WHERE 
+			d.r_id = r.r_id 
+		AND 
+			r.patient_id = #{pId}
+	</select>
+	
+	<insert id="addDiagnosis" parameterType="diagnosis">
+		INSERT INTO diagnosis
+			(d_id, 
+			 d_date, 
+			 d_status, 
+			 comment, 
+			 i_date, 
+			 total_i_status, 
+			 r_id
+			)
+		VALUES(
+			#{dId},
+			#{dDate},
+			#{dStatus},
+			#{comment},
+			#{iDate},
+			#{totalIstatus},
+			#{receptionId}
+		)
+	</insert>
+    
+    <select id="getCurrentDid" resultType="String">
+      SELECT 
+      	d_id as dId
+      FROM 
+      	diagnosis 
+      ORDER BY 
+      	d_id
+      DESC limit 1;
+   </select>
+   
+   <insert id="addInspection" parameterType="hasinspection">
+		INSERT INTO diagnosis_has_inspection
+			(i_id, 
+			 d_id, 
+			 i_status, 
+			 i_result, 
+			 patient_id, 
+			 bundle_code
+			)
+		VALUES(
+			#{iId},
+			#{dId},
+			#{iStatus},
+			#{iResult},
+			#{pId},
+			#{bundleCode}
+		)
+	</insert>
+	
+	<insert id="addMedicine" parameterType="hasmedicine">
+		INSERT INTO medicine_has_diagnosis
+			(m_id,
+			 d_id,
+			 p_id
+			)
+		VALUES(
+			#{mId},
+			#{dId},
+			#{pId}
+		)
+	</insert>
+</mapper>

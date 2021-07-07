@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.mycompany.webapp.dao.ReceptionUpdateDAO">
+ 
+    <select id="patientList" resultType="patient">
+		SELECT 
+			patient_id as patientId,
+			patient_name as patientName,
+			patient_age as patientAge,
+			patient_sex as patientSex,
+			patient_ssn1 as patientSsn1,
+			patient_ssn2 as patientSsn2,
+			patient_phone as patientPhone,
+			patient_zip as patientZip, 
+			address,
+			address_detail as addressDetail
+		FROM
+			patient
+	</select>
+	
+	<select id="doctorList" resultType="doctor">
+		SELECT 
+			doctor_id as doctorId,
+			doctor_name as doctorName,
+			doctor_phone as doctorPhone,
+			doctor_office as doctorOffice,
+			user_id as userId
+		FROM
+			doctor 
+
+	</select> 
+	
+	<insert id="insertReception" parameterType="reception">
+		insert into reception 
+		(r_date,
+		 r_time,
+		 r_status,
+		 r_role, 
+		 doctor_id, 
+		 patient_id)
+		values
+		(#{rDate}, #{rTime}, #{rStatus}, #{rRole}, #{doctorId}, #{patientId})
+	</insert>
+	
+	<select id="receptionListByDoctor" resultType="reception">
+		SELECT 
+			r_id as rId,
+			r_date as rDate,
+			r_time as rTime,
+			doctor_id as doctorId
+		FROM
+			reception
+		WHERE
+			r_date = #{rDate}
+			and 
+			doctor_id = #{doctorId}
+	</select> 
+	
+	<update id="updateReception" parameterType="reception">
+		UPDATE 
+			reception
+		SET	
+			r_date = #{rDate},
+			r_time = #{rTime},
+			doctor_id = #{doctorId},
+			r_role = #{rRole},
+			r_status = #{rStatus}
+		WHERE 
+			r_id = #{rId}
+	</update>
+</mapper>
+  

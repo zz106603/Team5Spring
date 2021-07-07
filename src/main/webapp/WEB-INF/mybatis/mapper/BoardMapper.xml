@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.mycompany.webapp.dao.BoardDAO">
+ 
+    <select id="selectAll" resultType="board">
+		SELECT 
+			notice_id,
+			notice_title,
+			notice_content,
+			notice_regdate,
+			user_id
+		FROM
+			notice
+	</select>
+	
+	 <select id="selectMainNotice" resultType="mainBoard">
+      SELECT 
+         main_notice_id as mainNoticeId,
+         main_notice_title as mainNoticeTitle,
+         main_notice_content as mainNoticeContent,
+         main_notice_regdate as mainNoticeRegdate,
+         main_notice_writer as mainNoticeWriter
+      FROM
+         main_notice
+   </select>
+    
+</mapper>

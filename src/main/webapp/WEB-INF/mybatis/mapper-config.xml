@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   <typeAliases>
+   	 <typeAlias type="com.mycompany.webapp.dto.Board" alias="board"/>
+   	 <typeAlias type="com.mycompany.webapp.dto.Medicine" alias="medicine"/>
+   	 <typeAlias type="com.mycompany.webapp.dto.Inspection" alias="inspection"/>
+   	 <typeAlias type="com.mycompany.webapp.dto.Patient" alias="patient"/> 
+   	 <typeAlias type="com.mycompany.webapp.dto.Diagnosis" alias="diagnosis"/> 
+   	 <typeAlias type="com.mycompany.webapp.dto.DiagnosisHasInspection" alias="hasinspection"/>
+   	 <typeAlias type="com.mycompany.webapp.dto.MedicineHasDiagnosis" alias="hasmedicine"/>
+     <typeAlias type="com.mycompany.webapp.dto.Doctor" alias="doctor"/>
+     <typeAlias type="com.mycompany.webapp.dto.Reception" alias="reception"/>
+     <typeAlias type="com.mycompany.webapp.dto.MainBoard" alias="mainBoard"/>
+   </typeAliases>
+</configuration>
