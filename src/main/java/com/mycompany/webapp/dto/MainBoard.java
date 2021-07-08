@@ -1,12 +1,10 @@
 package com.mycompany.webapp.dto;
 
-import java.util.Date;
-
 public class MainBoard {
 	private int mainNoticeId;
 	private String mainNoticeTitle;
 	private String mainNoticeContent;
-	private Date mainNoticeRegdate;
+	private String mainNoticeRegdate;
 	private String mainNoticeWriter;
 	
 	public int getMainNoticeId() {
@@ -27,10 +25,10 @@ public class MainBoard {
 	public void setMainNoticeContent(String mainNoticeContent) {
 		this.mainNoticeContent = mainNoticeContent;
 	}
-	public Date getMainNoticeRegdate() {
+	public String getMainNoticeRegdate() {
 		return mainNoticeRegdate;
 	}
-	public void setMainNoticeRegdate(Date mainNoticeRegdate) {
+	public void setMainNoticeRegdate(String mainNoticeRegdate) {
 		this.mainNoticeRegdate = mainNoticeRegdate;
 	}
 	public String getMainNoticeWriter() {
@@ -39,4 +37,6 @@ public class MainBoard {
 	public void setMainNoticeWriter(String mainNoticeWriter) {
 		this.mainNoticeWriter = mainNoticeWriter;
 	}
+	
+	
 }
