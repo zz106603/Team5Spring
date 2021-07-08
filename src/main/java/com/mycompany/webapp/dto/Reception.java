@@ -12,7 +12,14 @@ public class Reception {
 	private String patientName;
 	private String patientSsn1; 
 	private String patientPhone;
+	private String rRole;
 	
+	public String getrRole() {
+		return rRole;
+	}
+	public void setrRole(String rRole) {
+		this.rRole = rRole;
+	}
 	public String getPatientName() {
 		return patientName;
 	}
