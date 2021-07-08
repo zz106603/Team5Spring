@@ -50,5 +50,5 @@
 	<select id="countRday" parameterType="string" resultType="int" >
 		SELECT count(*) FROM reception WHERE r_date=#{day}
 	</select>
-	
+	 
 </mapper>

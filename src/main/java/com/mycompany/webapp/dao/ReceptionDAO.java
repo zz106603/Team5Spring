@@ -16,5 +16,5 @@ public interface ReceptionDAO {
 	public int countComplete(String day);
 	public void registerPatient(Patient patientRegister);
 	public String getLastId();
-	public int countRday(String day);	
+	public int countRday(String day);	 
 }
