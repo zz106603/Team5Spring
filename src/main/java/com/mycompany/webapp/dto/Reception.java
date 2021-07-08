@@ -1,16 +1,16 @@
 package com.mycompany.webapp.dto;
 
+import java.util.Date;
 
 public class Reception {
 	private int rId;
 	private String rDate;
 	private String rTime;
 	private String rStatus;
-	private String rRole;
 	private String doctorId;
-	private String patientId;
+	private String patientId; 
 	private String patientName;
-	private String patientSsn1;
+	private String patientSsn1; 
 	private String patientPhone;
 	
 	public String getPatientName() {
@@ -56,13 +56,6 @@ public class Reception {
 		this.rStatus = rStatus;
 	}
 
-	public String getrRole() {
-		return rRole;
-	}
-	public void setrRole(String rRole) {
-		this.rRole = rRole;
-	}
-	
 	public String getDoctorId() {
 		return doctorId;
 	}

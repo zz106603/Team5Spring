@@ -79,8 +79,16 @@ public class ReceptionController {
 	}
 	
 	@GetMapping("/countDay")
-	public int countDay(String day) {		
-		int countDay = receptionService.countRday(day);
-		return countDay;
+	public int[] countDay(String day, String day1, String day2, String day3, String day4, String day5) {		
+		int[] countList = {
+			receptionService.countRday(day),	
+			receptionService.countRday(day1),
+			receptionService.countRday(day2),
+			receptionService.countRday(day3),
+			receptionService.countRday(day4),
+			receptionService.countRday(day5)
+		};
+		System.out.println(countList);		
+		return countList;
 	}
 }
