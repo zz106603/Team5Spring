@@ -18,7 +18,7 @@ public class ReceptionService {
 	
 	public List<Reception> getReceptionList(String day){
 		List<Reception> list = receptionDAO.selectAll(day);
-		return list;
+		return list; 
 	}
 	
 	public void deletePatient(int cancelId) {
