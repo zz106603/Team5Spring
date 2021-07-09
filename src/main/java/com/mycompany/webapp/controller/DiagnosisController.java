@@ -1,11 +1,15 @@
 package com.mycompany.webapp.controller;
 
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +28,7 @@ import com.mycompany.webapp.dto.Inspection;
 import com.mycompany.webapp.dto.Medicine;
 import com.mycompany.webapp.dto.MedicineHasDiagnosis;
 import com.mycompany.webapp.dto.Patient;
+import com.mycompany.webapp.mqtt.MqttTemplate;
 import com.mycompany.webapp.service.DiagnosisService;
 
 @CrossOrigin(origins="*")
@@ -35,6 +40,8 @@ public class DiagnosisController {
 	@Autowired
 	private DiagnosisService diagnosisService;
 
+	@Autowired
+	private MqttTemplate mqttTemplate;
 	
 	@RequestMapping("/home")
 	public String test(){
@@ -128,11 +135,6 @@ public class DiagnosisController {
 			md.setpId(diagnosis.getPatientId());
 			diagnosisService.addMedicine(md);
 		}
-		
-		
-		
-	
-		
 		
 		
 	}

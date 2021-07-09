@@ -4,9 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -61,6 +58,7 @@ public class AuthController {
 	    	map.put("userid", uid);
 			map.put("authToken", authToken);
 			map.put("role", role);
+			
 	    }
 	    
 		return map;
