@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,9 +23,14 @@ public class testController {
 	@Autowired
 	private MqttTemplate mqttTemplate;
 	
+	private static final Logger logger = 
+			LoggerFactory.getLogger(testController.class);
+	
 	
 	@RequestMapping("/sendMqttMessage")
 	public void sendMqttMessage(String topic, String content, HttpServletResponse res) {
+		
+		logger.info("sendMessage");
 
 		try {
 			mqttTemplate.sendMessage(topic, content);

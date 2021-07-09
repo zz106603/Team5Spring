@@ -42,7 +42,11 @@
 		WHERE 
 			r.r_date = #{day} 
 		AND 
-			p.patient_id = r.patient_id;
+			p.patient_id = r.patient_id
+		AND
+            r.r_status = "접수완료"
+        ORDER BY
+        	r.r_time DESC;
 			
 	</select>
 	

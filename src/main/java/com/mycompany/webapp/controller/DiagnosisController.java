@@ -90,6 +90,8 @@ public class DiagnosisController {
 	@ResponseBody
 	public void add(@RequestBody Diagnosis diagnosis) {
 		
+		
+		
 		Calendar dDate  = Calendar.getInstance();
 		dDate.setTime(new Date());
 		Calendar iDate  = Calendar.getInstance();
@@ -98,7 +100,7 @@ public class DiagnosisController {
 		DateFormat df2 = new SimpleDateFormat("yyMMddHHmmssSSS");
 		
 		iDate.add(Calendar.MINUTE, 30);
-	
+		
 		Diagnosis d = new Diagnosis();
 		
 		d.setdId(df2.format(new Date()));
