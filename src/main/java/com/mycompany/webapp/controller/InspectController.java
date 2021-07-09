@@ -1,8 +1,12 @@
 package com.mycompany.webapp.controller;
 
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.ibatis.annotations.Param;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,42 +24,62 @@ import com.mycompany.webapp.dto.Diagnosis;
 import com.mycompany.webapp.dto.DiagnosisInspection;
 import com.mycompany.webapp.dto.Patient;
 import com.mycompany.webapp.dto.State;
+import com.mycompany.webapp.mqtt.MqttTemplate;
 import com.mycompany.webapp.service.InspectService;
 
-
-
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/inspection")
 public class InspectController {
-   private final Logger logger = LoggerFactory.getLogger(InspectController.class);
-   
-   @Autowired
-   private InspectService inspectService;
-   
-       
-      @GetMapping("")
-      public List<Patient> list(){
-         List<Patient> list = inspectService.getPateintList();
-         return list;
-      }
-      
-      @GetMapping("/inspectList")
-      public List<DiagnosisInspection> Inspectlist(String pno,String did){
-         List<DiagnosisInspection> list = inspectService.getInspectList(pno,did);
-         return list;
-      }
-      
-      @PutMapping("/updateInspect/{changeValue}")
-      @ResponseBody
-      public void updateInspect(@RequestBody DiagnosisInspection inspection,@PathVariable String changeValue) {
-         inspectService.UpdateInspect(inspection.getiId(), inspection.getBundleCode(), changeValue);
-          
-      }
-      @PutMapping("/updatePinspect/")
-      @ResponseBody
-      public void UpdatePinspect(@RequestBody Diagnosis diagnosis) {
-         inspectService.UpdatePatientStatus(diagnosis.getdId(), diagnosis.getTotalIstatus());
-   }
-      
+	private final Logger logger = LoggerFactory.getLogger(InspectController.class);
+
+	@Autowired
+	private InspectService inspectService;
+	
+	@Autowired
+	private MqttTemplate mqttTemplate;
+
+	@GetMapping("")
+	public List<Patient> list() {
+		List<Patient> list = inspectService.getPateintList();
+		return list;
+	}
+
+	@GetMapping("/inspectList")
+	public List<DiagnosisInspection> Inspectlist(String pno, String did) {
+		List<DiagnosisInspection> list = inspectService.getInspectList(pno, did);
+		return list;
+	}
+
+	@PutMapping("/updateInspect/{changeValue}")
+	@ResponseBody
+	public void updateInspect(@RequestBody DiagnosisInspection inspection, @PathVariable String changeValue) {
+		inspectService.UpdateInspect(inspection.getiId(), inspection.getBundleCode(), changeValue);
+
+	}
+
+	@PutMapping("/updatePinspect/")
+	@ResponseBody
+	public void UpdatePinspect(@RequestBody Diagnosis diagnosis) {
+		inspectService.UpdatePatientStatus(diagnosis.getdId(), diagnosis.getTotalIstatus());
+	}
+	
+	@RequestMapping("/sendMqttMessage")
+	public void sendMqttMessage(String topic, String content, HttpServletResponse res) {
+		logger.info("sendMessage");
+		try {
+			mqttTemplate.sendMessage(topic, content);
+		
+			JSONObject json = new JSONObject();
+			json.put("result", "success");
+			res.setContentType("application/json; charset=UTF-8");
+			PrintWriter writer = res.getWriter();
+			writer.write(json.toString());
+			writer.flush();
+			writer.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}	
+
 }
