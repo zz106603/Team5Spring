@@ -16,7 +16,7 @@
 		<!-- form-login | http-basic 중 하나 지정해야함 -->
 		
 		 <security:http-basic />
-		
+
 		<!-- CORS 설정 -->
 		<security:cors configuration-source-ref="corsSource"/>
 	
@@ -113,8 +113,8 @@
 			</bean>
 		</constructor-arg>
 	</bean>
+ 
 </beans>
-
 
 
 
