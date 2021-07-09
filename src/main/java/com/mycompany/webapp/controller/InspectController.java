@@ -64,5 +64,6 @@ public class InspectController {
 		inspectService.UpdatePatientStatus(diagnosis.getdId(), diagnosis.getTotalIstatus());
 	}
 	
-	
+
+
 }

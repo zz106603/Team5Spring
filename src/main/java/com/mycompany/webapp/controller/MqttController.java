@@ -16,17 +16,17 @@ import com.mycompany.webapp.mqtt.MqttTemplate;
 
 @CrossOrigin(origins="*")
 @Controller
-public class testController {
+public class MqttController {
 	
 	@Autowired
 	private MqttTemplate mqttTemplate;
 	
 	
 	@RequestMapping("/sendMqttMessage")
-	public void sendMqttMessage(String topic, String content, HttpServletResponse res) {
+	public void sendMqttMessage(String topic, HttpServletResponse res) {
 
 		try {
-			mqttTemplate.sendMessage(topic, content);
+			mqttTemplate.sendMessage(topic);
 		
 			JSONObject json = new JSONObject();
 			json.put("result", "success");
