@@ -31,6 +31,13 @@
 			inspection
 	</select>
 	
+	<select id="inspectCompareList" resultType="hasinspection">
+		SELECT distinct
+			patient_id as pId
+		FROM
+			diagnosis_has_inspection
+	</select>
+	
 	<select id="patientList" resultType="patient" parameterType="String"> 
 		SELECT 
 			p.patient_id as patientId, 

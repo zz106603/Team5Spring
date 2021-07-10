@@ -73,6 +73,14 @@ public class DiagnosisController {
 		return list;
 	}
 	
+	@GetMapping("/inspectioncompare")
+	public List<DiagnosisHasInspection> inspectionCompareList(){
+		List<DiagnosisHasInspection> list = diagnosisService.getInspectCompareList();
+		
+		return list;
+	}
+	
+	
 	@GetMapping("/pastrecord")
 	public List<Diagnosis> pastRecordList(@RequestParam(defaultValue = "")String pId){
 		List<Diagnosis> list = diagnosisService.getRecordList(pId);

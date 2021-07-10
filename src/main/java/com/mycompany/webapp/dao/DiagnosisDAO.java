@@ -27,6 +27,7 @@ public interface DiagnosisDAO {
 	public String getCurrentDid();
 	public int addInspection(DiagnosisHasInspection di);
 	public int addMedicine(MedicineHasDiagnosis md);
+	public List<DiagnosisHasInspection> inspectCompareList();
 
 	
 	
