@@ -34,11 +34,6 @@ public class AuthController {
 		String upassword = user.get("upassword");
 		String hid = user.get("hid");
 		
-		System.out.println(uid);
-		System.out.println(upassword);
-		System.out.println(hid);
-		
-		
 		//사용자 인증하기
 		UsernamePasswordAuthenticationToken authReq = new UsernamePasswordAuthenticationToken(uid, upassword);
 	    Authentication authentication = authenticationManager.authenticate(authReq);
@@ -51,6 +46,8 @@ public class AuthController {
 	    //권한 가져오기
 	    String role = authService.getRole(uid);
 	    
+	    String name = authService.getUserName(uid);
+	    
 	    Map<String, String> map = new HashMap<>();
 	    int loginCheck = authService.loginCheck(hid, uid);
 	    
@@ -58,6 +55,7 @@ public class AuthController {
 	    	map.put("userid", uid);
 			map.put("authToken", authToken);
 			map.put("role", role);
+			map.put("name", name);
 			
 	    }
 	    

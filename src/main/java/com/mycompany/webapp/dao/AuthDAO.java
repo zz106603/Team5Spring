@@ -7,4 +7,5 @@ import org.apache.ibatis.annotations.Param;
 public interface AuthDAO {
 	public String getRole(String uId);
 	public int checkLogin(@Param("hId")String hId, @Param("uId")String uId);
+	public String getUserName(String uId);
 }

@@ -12,6 +12,15 @@
 			user_id = #{uId}
 	</select>
 	
+	 <select id="getUserName" resultType="String">
+		SELECT 
+			user_name
+		FROM
+			user
+		WHERE
+			user_id = #{uId}
+	</select>
+	
     <select id="checkLogin" resultType="int">
 		SELECT 
 			COUNT(*)

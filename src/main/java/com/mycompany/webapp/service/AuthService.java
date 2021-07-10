@@ -19,4 +19,9 @@ public class AuthService {
 		int check = authDao.checkLogin(hId, uId);
 		return check;
 	}
+
+	public String getUserName(String uId) {
+		String name = authDao.getUserName(uId); 
+		return name;
+	}
 }
