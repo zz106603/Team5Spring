@@ -86,5 +86,10 @@ public class DiagnosisService {
 		
 	}
 
+	public List<DiagnosisHasInspection> getInspectCompareList() {
+		List<DiagnosisHasInspection> list = diagnosisDAO.inspectCompareList(); 
+		return list;
+	}
+
 
 }
