@@ -27,8 +27,14 @@ public class ReceptionUpdateService {
 		return list;
 	}
 	
+	//의사 리스트 가져오기 
 	public List<Doctor> getDoctorList() {
 		List<Doctor> list = receptionUpdateDAO.doctorList();	
+		return list;
+	}
+	
+	public List<Reception> receptionListByDate(String r_date){
+		List<Reception> list = receptionUpdateDAO.receptionListByDate(r_date);
 		return list;
 	}
 	

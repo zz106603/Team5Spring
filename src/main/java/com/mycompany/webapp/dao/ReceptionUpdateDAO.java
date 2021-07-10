@@ -13,6 +13,7 @@ import com.mycompany.webapp.dto.Reception;
 public interface ReceptionUpdateDAO {
 	public List<Patient> patientList();
 	public List<Doctor> doctorList();
+	public List<Reception> receptionListByDate(@Param("rDate") String r_date);
 	public int insertReception(Reception reception);
 	public List<Reception> receptionListByDoctor(@Param("doctorId") String doctor_id, @Param("rDate") String r_date);
 	public int updateReception(Reception reception);

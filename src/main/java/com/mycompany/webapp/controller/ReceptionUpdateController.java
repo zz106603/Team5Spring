@@ -42,7 +42,14 @@ public class ReceptionUpdateController {
 		List<Doctor> list = receptionUpdateService.getDoctorList();
 		return list;
 	}
-
+	
+	@GetMapping("/receptionListByDate")
+	public List<Reception> todayList(String r_date){
+		logger.info(r_date);
+		List<Reception> list = receptionUpdateService.receptionListByDate(r_date);
+		return list;
+	}
+	
 	@PostMapping("/insertReception")
 	@ResponseBody
 	public void insertReception(@RequestBody Reception reception) {

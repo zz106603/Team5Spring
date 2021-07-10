@@ -28,8 +28,21 @@
 			user_id as userId
 		FROM
 			doctor 
-
 	</select> 
+	
+	<select id="receptionListByDate" resultType="reception">
+		SELECT
+			r_id as rId,
+			r_date as rDate,
+			r_time as rTime,
+			patient_id as patientId,
+			doctor_id as doctorId
+		FROM 
+			reception
+		WHERE
+			r_date = #{rDate}
+	</select>
+	
 	
 	<insert id="insertReception" parameterType="reception">
 		insert into reception 
