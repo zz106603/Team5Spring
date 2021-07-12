@@ -21,12 +21,22 @@ public class Diagnosis {
 	
 	
 	//과거기록 검사 목록
+	private String bundleCode;
 	private String iId;
 	private String iName;
 	private String inspector;
 	private String iResult;
 	
 	
+	
+
+	public String getBundleCode() {
+		return bundleCode;
+	}
+
+	public void setBundleCode(String bundleCode) {
+		this.bundleCode = bundleCode;
+	}
 
 	public String getdId() {
 		return dId;

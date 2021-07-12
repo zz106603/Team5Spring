@@ -85,6 +85,7 @@
 	
 	<select id="pastRecordIlist" resultType="diagnosis">
 		SELECT 
+			i.bundle_code as bundleCode,
 			i.i_id as iId, 
 			i.i_name as iName, 
 			i.inspector as inspector, 
@@ -108,7 +109,8 @@
 		WHERE 
 			dd.i_id = i.i_id 
 		AND 
-			dd.bundle_code = i.bundle_code;
+			dd.bundle_code = i.bundle_code
+		ORDER BY bundleCode ASC;
 	</select>
 	
 	<select id="pastRecordMlist" resultType="medicine">
