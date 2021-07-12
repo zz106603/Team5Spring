@@ -37,6 +37,7 @@ public class ReceptionController {
 	@GetMapping("")
   	public List<Reception> list(String day) throws Exception{
 		List<Reception> list = receptionService.getReceptionList(day);
+
 		return list;
 	}	
 	
