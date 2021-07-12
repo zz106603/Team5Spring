@@ -41,7 +41,7 @@
 	<update id="updateInspectStatus" >
 		update diagnosis_has_inspection 
 		set i_status=#{changeValue}
-		where i_id=#{iId} and bundle_code =#{bundleCode}
+		where i_id=#{iId} and bundle_code=#{bundleCode} and patient_id=#{patientId}
 	</update>
 	
 		<update id="updateInspectPstatus" >
