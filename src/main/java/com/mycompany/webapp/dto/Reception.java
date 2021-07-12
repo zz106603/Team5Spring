@@ -13,7 +13,7 @@ public class Reception {
 	private String patientSsn1; 
 	private String patientPhone;
 	private String patientSex;
-	private String rRole;
+	private String rRole; 
 	private String doctorName;
 	private String doctorOffice;
 	

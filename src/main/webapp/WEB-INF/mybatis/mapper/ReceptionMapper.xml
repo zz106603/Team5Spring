@@ -3,21 +3,23 @@
  
 <mapper namespace="com.mycompany.webapp.dao.ReceptionDAO">
  
-    <select id="selectAll" parameterType="string" resultType="reception" >
+    <select id="selectAll" parameterType="string" resultType="reception" >		
 		SELECT 
 			r.r_id AS rId,			
 			r.r_date AS rDate,			
 			r.r_time AS rTime,			
 			r.r_status AS rStatus,			
-			r.doctor_id AS doctorId,			
+			r.doctor_id AS doctorId,
 			r.patient_id AS patientId,
-			i.patient_name AS patientName,
-			i.patient_ssn1 AS patientSsn1,
-			i.patient_phone AS patientPhone
+			p.patient_name AS patientName,
+			p.patient_ssn1 AS patientSsn1,
+			p.patient_phone AS patientPhone,
+			p.patient_sex AS patientSex,
+			d.doctor_name AS doctorName,
+			d.doctor_office AS doctorOffice	
 		FROM
-			reception r, patient i
-		WHERE r.r_date=#{day} and i.patient_id = r.patient_id  
-		ORDER BY r.r_id DESC
+			reception r, patient p, doctor d
+		WHERE r.r_date=#{day} and r.doctor_id=d.doctor_id and p.patient_id=r.patient_id
 	</select>
     
     <delete id="deletePatient" parameterType="int" >
