@@ -34,13 +34,14 @@ public class AuthController {
 		String upassword = user.get("upassword");
 		String hid = user.get("hid");
 		
+				
 		//사용자 인증하기
 		UsernamePasswordAuthenticationToken authReq = new UsernamePasswordAuthenticationToken(uid, upassword);
 	    Authentication authentication = authenticationManager.authenticate(authReq);
 	    SecurityContext securityContext = SecurityContextHolder.getContext();
 	    securityContext.setAuthentication(authentication);
 	    
-	    //JWT 토큰 생성
+	    	    //JWT 토큰 생성
 	    String authToken = JwtUtil.createToken(uid);
 		
 	    //권한 가져오기

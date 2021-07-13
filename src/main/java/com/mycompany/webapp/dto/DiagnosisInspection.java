@@ -3,6 +3,7 @@ package com.mycompany.webapp.dto;
 public class DiagnosisInspection {
 	private String iId;
 	private String dId;
+	private String dDate;
 	private String iStatus;
 	private String iResult;
 	private	String patientId;
@@ -12,6 +13,14 @@ public class DiagnosisInspection {
 	private String lowerLimit;
 	private String upperLimit;
 	private	String inspector;
+	
+	
+	public String getdDate() {
+		return dDate;
+	}
+	public void setdDate(String dDate) {
+		this.dDate = dDate;
+	}
 	public String getiId() {
 		return iId;
 	}

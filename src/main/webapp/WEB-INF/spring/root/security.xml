@@ -15,7 +15,10 @@
 		<!-- Authorization 헤더를 통한 인증 허용(여기서는 사용되지 않음) -->
 		<!-- form-login | http-basic 중 하나 지정해야함 -->
 		
-		 <security:http-basic />
+		 <!-- <security:http-basic /> -->
+		  <security:form-login 
+		  			authentication-failure-handler-ref="authFailureHandler"
+                      />
 
 		<!-- CORS 설정 -->
 		<security:cors configuration-source-ref="corsSource"/>
@@ -114,6 +117,9 @@
 		</constructor-arg>
 	</bean>
  
+ 	<bean id="authFailureHandler" class="com.mycompany.webapp.security.AuthFailureHandler">
+		<property name="defaultFailureUrl" value="/auth/login"></property>	
+	</bean>
 </beans>
 
 

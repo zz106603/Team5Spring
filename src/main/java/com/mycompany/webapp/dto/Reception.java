@@ -12,7 +12,11 @@ public class Reception {
 	private String patientName;
 	private String patientSsn1; 
 	private String patientPhone;
-	private String rRole;
+	private String patientSex;
+	private String rRole; 
+	private String doctorName;
+	private String doctorOffice;
+	
 	
 	public String getrRole() {
 		return rRole;
@@ -75,7 +79,24 @@ public class Reception {
 	public void setPatientId(String patientId) {
 		this.patientId = patientId;
 	}
-	
+	public String getPatientSex() {
+		return patientSex;
+	}
+	public void setPatientSex(String patientSex) {
+		this.patientSex = patientSex;
+	}
+	public String getDoctorName() {
+		return doctorName;
+	}
+	public void setDoctorName(String doctorName) {
+		this.doctorName = doctorName;
+	}
+	public String getDoctorOffice() {
+		return doctorOffice;
+	}
+	public void setDoctorOffice(String doctorOffice) {
+		this.doctorOffice = doctorOffice;
+	}
 
 	
 }

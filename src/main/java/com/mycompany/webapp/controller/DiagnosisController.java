@@ -1,15 +1,11 @@
 package com.mycompany.webapp.controller;
 
-import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mycompany.webapp.dto.Diagnosis;
-import com.mycompany.webapp.dto.DiagnosisHasInspection;
+import com.mycompany.webapp.dto.DiagnosisInspection;
 import com.mycompany.webapp.dto.Inspection;
 import com.mycompany.webapp.dto.Medicine;
-import com.mycompany.webapp.dto.MedicineHasDiagnosis;
+import com.mycompany.webapp.dto.MedicineDiagnosis;
 import com.mycompany.webapp.dto.Patient;
 import com.mycompany.webapp.mqtt.MqttTemplate;
 import com.mycompany.webapp.service.DiagnosisService;
@@ -74,8 +70,8 @@ public class DiagnosisController {
 	}
 	
 	@GetMapping("/inspectioncompare")
-	public List<DiagnosisHasInspection> inspectionCompareList(){
-		List<DiagnosisHasInspection> list = diagnosisService.getInspectCompareList();
+	public List<DiagnosisInspection> inspectionCompareList(){
+		List<DiagnosisInspection> list = diagnosisService.getInspectCompareList();
 		
 		return list;
 	}
@@ -129,17 +125,17 @@ public class DiagnosisController {
 		
 		
 		for(int i=0; i<diagnosis.getInspectionList().size(); i++) {
-			DiagnosisHasInspection di = new DiagnosisHasInspection();
+			DiagnosisInspection di = new DiagnosisInspection();
 			di.setiId(diagnosis.getInspectionList().get(i).getiId());
 			di.setdId(currentDid);
 			di.setiStatus("대기");
-			di.setpId(diagnosis.getPatientId());
+			di.setPatientId(diagnosis.getPatientId());
 			di.setBundleCode(diagnosis.getInspectionList().get(i).getBundleCode());
 			diagnosisService.addInspection(di);
 		}
 		
 		for(int i=0; i<diagnosis.getMedicineList().size(); i++) {
-			MedicineHasDiagnosis md = new MedicineHasDiagnosis();
+			MedicineDiagnosis md = new MedicineDiagnosis();
 			md.setmId(diagnosis.getMedicineList().get(i).getmId());
 			md.setdId(currentDid);
 			md.setpId(diagnosis.getPatientId());

@@ -6,10 +6,10 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.mycompany.webapp.dto.Diagnosis;
-import com.mycompany.webapp.dto.DiagnosisHasInspection;
+import com.mycompany.webapp.dto.DiagnosisInspection;
 import com.mycompany.webapp.dto.Inspection;
 import com.mycompany.webapp.dto.Medicine;
-import com.mycompany.webapp.dto.MedicineHasDiagnosis;
+import com.mycompany.webapp.dto.MedicineDiagnosis;
 import com.mycompany.webapp.dto.Patient;
 
 @Mapper
@@ -25,9 +25,9 @@ public interface DiagnosisDAO {
 	public Diagnosis pastRecordMemo(@Param("pId")String pId, @Param("day")String day);
 	public int addDiagnosis(Diagnosis diagnosis);
 	public String getCurrentDid();
-	public int addInspection(DiagnosisHasInspection di);
-	public int addMedicine(MedicineHasDiagnosis md);
-	public List<DiagnosisHasInspection> inspectCompareList();
+	public int addInspection(DiagnosisInspection di);
+	public int addMedicine(MedicineDiagnosis md);
+	public List<DiagnosisInspection> inspectCompareList();
 
 	
 	
