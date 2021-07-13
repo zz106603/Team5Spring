@@ -26,8 +26,8 @@ public class InspectService {
 		return list;
 	}
 	
-	public void UpdateInspect(String i_id,String bundle_code,String changeValue) {
-		inspectDao.updateInspectStatus(i_id, bundle_code, changeValue);
+	public void UpdateInspect(String i_id,String bundle_code,String patient_id,String changeValue) {
+		inspectDao.updateInspectStatus(i_id, bundle_code,patient_id,changeValue);
 	}
 	
 	public void UpdatePatientStatus(String d_id,String total_i_status) {

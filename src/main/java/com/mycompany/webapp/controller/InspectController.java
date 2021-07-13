@@ -53,8 +53,9 @@ public class InspectController {
 
 	@PutMapping("/updateInspect/{changeValue}")
 	@ResponseBody
-	public void updateInspect(@RequestBody DiagnosisInspection inspection, @PathVariable String changeValue) {
-		inspectService.UpdateInspect(inspection.getiId(), inspection.getBundleCode(), changeValue);
+	public void updateInspect(@RequestBody DiagnosisInspection inspection, @PathVariable String changeValue ) {
+		logger.info(inspection.getPatientId());
+		inspectService.UpdateInspect(inspection.getiId(), inspection.getBundleCode(),inspection.getPatientId(), changeValue);
 
 	}
 

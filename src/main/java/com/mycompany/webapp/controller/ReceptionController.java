@@ -37,17 +37,7 @@ public class ReceptionController {
 	@GetMapping("")
   	public List<Reception> list(String day) throws Exception{
 		List<Reception> list = receptionService.getReceptionList(day);
-		
-		System.out.println(list.get(0).getrDate());
-		System.out.println(list.get(0).getPatientSex());
-		System.out.println(list.get(0).getDoctorName());
-		System.out.println(list.get(0).getDoctorOffice());
-		System.out.println(list.get(0).getPatientName());
-		System.out.println(list.get(0).getPatientId());
-		System.out.println(list.get(0).getPatientPhone());
-		System.out.println(list.get(0).getPatientSsn1());
-		
-		
+
 		return list;
 	}	
 	

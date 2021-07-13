@@ -12,6 +12,6 @@ import com.mycompany.webapp.dto.Patient;
 public interface InspectDAO {
 	public List<Patient> IpatientList();
 	public List<DiagnosisInspection> InspectList(@Param("pno")String pno,@Param("did")String did);
-	public void updateInspectStatus(@Param("iId")String i_id,@Param("bundleCode")String bundle_code,@Param("changeValue")String changeValue);
+	public void updateInspectStatus(@Param("iId")String i_id,@Param("bundleCode")String bundle_code,@Param("patientId")String patient_id,@Param("changeValue")String changeValue);
 	public void updateInspectPstatus(@Param("dId")String d_id, @Param("totalIstatus")String total_i_status);
 }
