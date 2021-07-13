@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.DiagnosisDAO;
 import com.mycompany.webapp.dto.Diagnosis;
-import com.mycompany.webapp.dto.DiagnosisHasInspection;
+import com.mycompany.webapp.dto.DiagnosisInspection;
 import com.mycompany.webapp.dto.Inspection;
 import com.mycompany.webapp.dto.Medicine;
-import com.mycompany.webapp.dto.MedicineHasDiagnosis;
+import com.mycompany.webapp.dto.MedicineDiagnosis;
 import com.mycompany.webapp.dto.Patient;
 
 @Service
@@ -75,19 +75,19 @@ public class DiagnosisService {
 		return result;
 	}
 
-	public int addInspection(DiagnosisHasInspection di) {
+	public int addInspection(DiagnosisInspection di) {
 		int result = diagnosisDAO.addInspection(di);
 		return result;
 	}
 
-	public int addMedicine(MedicineHasDiagnosis md) {
+	public int addMedicine(MedicineDiagnosis md) {
 		int result = diagnosisDAO.addMedicine(md);
 		return result;
 		
 	}
 
-	public List<DiagnosisHasInspection> getInspectCompareList() {
-		List<DiagnosisHasInspection> list = diagnosisDAO.inspectCompareList(); 
+	public List<DiagnosisInspection> getInspectCompareList() {
+		List<DiagnosisInspection> list = diagnosisDAO.inspectCompareList(); 
 		return list;
 	}
 

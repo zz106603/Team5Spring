@@ -31,11 +31,12 @@
 			inspection
 	</select>
 	
-	<select id="inspectCompareList" resultType="hasinspection">
-		SELECT distinct
-			patient_id as pId
+	<select id="inspectCompareList" resultType="diagnosisInspection">
+		SELECT distinct 
+			di.patient_id as patientId,
+			substring(d.d_date, 1, 10) as dDate
 		FROM
-			diagnosis_has_inspection
+			diagnosis_has_inspection di, diagnosis d
 	</select>
 	
 	<select id="patientList" resultType="patient" parameterType="String"> 
@@ -183,7 +184,7 @@
       DESC limit 1;
    </select>
    
-   <insert id="addInspection" parameterType="hasinspection">
+   <insert id="addInspection" parameterType="diagnosisInspection">
 		INSERT INTO diagnosis_has_inspection
 			(i_id, 
 			 d_id, 
@@ -197,12 +198,12 @@
 			#{dId},
 			#{iStatus},
 			#{iResult},
-			#{pId},
+			#{patientId},
 			#{bundleCode}
 		)
 	</insert>
 	
-	<insert id="addMedicine" parameterType="hasmedicine">
+	<insert id="addMedicine" parameterType="medicineDiagnosis">
 		INSERT INTO medicine_has_diagnosis
 			(m_id,
 			 d_id,

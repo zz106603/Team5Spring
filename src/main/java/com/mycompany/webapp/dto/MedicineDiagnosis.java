@@ -1,6 +1,6 @@
 package com.mycompany.webapp.dto;
 
-public class MedicineHasDiagnosis {
+public class MedicineDiagnosis {
 
 	private String mId;
 	private String dId;
