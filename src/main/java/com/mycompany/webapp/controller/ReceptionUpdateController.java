@@ -45,7 +45,6 @@ public class ReceptionUpdateController {
 	
 	@GetMapping("/receptionListByDate")
 	public List<Reception> todayList(String r_date){
-		logger.info(r_date);
 		List<Reception> list = receptionUpdateService.receptionListByDate(r_date);
 		return list;
 	}
