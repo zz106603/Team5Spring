@@ -29,13 +29,13 @@ public class MqttTemplate {
 		}
 	}
 	
-	public void sendMessage(String topic) {
+	public void sendMessage(String topic, String content) {
 		try {
 			MqttMessage message = new MqttMessage();
 			
 			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("topic", topic);
-			
+			jsonObject.put("content", content);
 			String json = jsonObject.toString();
 			message.setPayload(json.getBytes());
 			

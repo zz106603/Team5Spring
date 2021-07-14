@@ -23,10 +23,10 @@ public class MqttController {
 	
 	
 	@RequestMapping("/sendMqttMessage")
-	public void sendMqttMessage(String topic, HttpServletResponse res) {
+	public void sendMqttMessage(String topic, String content, HttpServletResponse res) {
 
 		try {
-			mqttTemplate.sendMessage(topic);
+			mqttTemplate.sendMessage(topic,content);
 		
 			JSONObject json = new JSONObject();
 			json.put("result", "success");
