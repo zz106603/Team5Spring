@@ -24,6 +24,7 @@ import com.mycompany.webapp.dto.Inspection;
 import com.mycompany.webapp.dto.Medicine;
 import com.mycompany.webapp.dto.MedicineDiagnosis;
 import com.mycompany.webapp.dto.Patient;
+import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.mqtt.MqttTemplate;
 import com.mycompany.webapp.service.DiagnosisService;
 
@@ -165,6 +166,13 @@ public class DiagnosisController {
 				
 		return diagnosis;
 		
+	}
+	
+	@GetMapping("/userlist")
+	public List<User> getUserList(String uid){
+		List<User> list = diagnosisService.getUserList(uid);
+		
+		return list;
 	}
 	
 }

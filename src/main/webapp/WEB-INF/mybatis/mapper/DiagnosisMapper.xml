@@ -32,11 +32,13 @@
 	</select>
 	
 	<select id="inspectCompareList" resultType="diagnosisInspection">
-		SELECT distinct 
-			di.patient_id as patientId,
+		SELECT distinct
+			r.patient_id as patientId, 
 			substring(d.d_date, 1, 10) as dDate
 		FROM
-			diagnosis_has_inspection di, diagnosis d
+			diagnosis d, reception r
+		WHERE
+			d.r_id = r.r_id
 	</select>
 	
 	<select id="patientList" resultType="patient" parameterType="String"> 
@@ -215,4 +217,14 @@
 			#{pId}
 		)
 	</insert>
+	
+	<select id="userListAll" resultType="user" parameterType="String">
+		SELECT 
+			user_id as userId,
+			user_name as userName
+		FROM
+			user
+		WHERE
+			user_id != #{uid}
+	</select>
 </mapper>

@@ -11,6 +11,7 @@ import com.mycompany.webapp.dto.Inspection;
 import com.mycompany.webapp.dto.Medicine;
 import com.mycompany.webapp.dto.MedicineDiagnosis;
 import com.mycompany.webapp.dto.Patient;
+import com.mycompany.webapp.dto.User;
 
 @Mapper
 public interface DiagnosisDAO {
@@ -28,6 +29,7 @@ public interface DiagnosisDAO {
 	public int addInspection(DiagnosisInspection di);
 	public int addMedicine(MedicineDiagnosis md);
 	public List<DiagnosisInspection> inspectCompareList();
+	public List<User> userListAll(String uid);
 
 	
 	

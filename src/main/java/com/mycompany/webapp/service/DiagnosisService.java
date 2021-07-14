@@ -12,6 +12,7 @@ import com.mycompany.webapp.dto.Inspection;
 import com.mycompany.webapp.dto.Medicine;
 import com.mycompany.webapp.dto.MedicineDiagnosis;
 import com.mycompany.webapp.dto.Patient;
+import com.mycompany.webapp.dto.User;
 
 @Service
 public class DiagnosisService {
@@ -88,6 +89,11 @@ public class DiagnosisService {
 
 	public List<DiagnosisInspection> getInspectCompareList() {
 		List<DiagnosisInspection> list = diagnosisDAO.inspectCompareList(); 
+		return list;
+	}
+
+	public List<User> getUserList(String uid) {
+		List<User> list = diagnosisDAO.userListAll(uid); 
 		return list;
 	}
 
