@@ -20,6 +20,7 @@
 		FROM
 			reception r, patient p, doctor d
 		WHERE r.r_date=#{day} and r.doctor_id=d.doctor_id and p.patient_id=r.patient_id
+		ORDER BY r.r_time DESC
 	</select>
     
     <delete id="deletePatient" parameterType="int" >
