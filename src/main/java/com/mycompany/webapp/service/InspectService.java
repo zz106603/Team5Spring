@@ -30,6 +30,10 @@ public class InspectService {
 		inspectDao.updateInspectStatus(i_id, bundle_code,patient_id,changeValue);
 	}
 	
+	public void UpdateInspectResult(String i_id,String bundle_code,String patient_id,String iResult) {
+		inspectDao.updateInspectResult(i_id, bundle_code,patient_id,iResult);
+	}
+	
 	public void UpdatePatientStatus(String d_id,String total_i_status) {
 		inspectDao.updateInspectPstatus(d_id, total_i_status);
 	}

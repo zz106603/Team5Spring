@@ -1,7 +1,9 @@
 package com.mycompany.webapp.controller;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -57,6 +59,19 @@ public class InspectController {
 		logger.info(inspection.getPatientId());
 		inspectService.UpdateInspect(inspection.getiId(), inspection.getBundleCode(),inspection.getPatientId(), changeValue);
 
+	}
+	
+	@PutMapping("/updateInspectResult/")
+	@ResponseBody
+	public Map<String,String> updateInspectResult(@RequestBody DiagnosisInspection inspection) {	
+		Map<String, String> map = new HashMap<>();		
+		if(inspection.getiResult()=="") {
+			map.put("result", "failed");
+			return map;
+	}
+		inspectService.UpdateInspectResult(inspection.getiId(), inspection.getBundleCode(),inspection.getPatientId(), inspection.getiResult());
+		map.put("result", "success");
+		return map;
 	}
 
 	@PutMapping("/updatePinspect/")
