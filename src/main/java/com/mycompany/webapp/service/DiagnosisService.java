@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.DiagnosisDAO;
+import com.mycompany.webapp.dto.Chat;
 import com.mycompany.webapp.dto.Diagnosis;
 import com.mycompany.webapp.dto.DiagnosisInspection;
 import com.mycompany.webapp.dto.Inspection;
@@ -92,10 +93,7 @@ public class DiagnosisService {
 		return list;
 	}
 
-	public List<User> getUserList(String uid) {
-		List<User> list = diagnosisDAO.userListAll(uid); 
-		return list;
-	}
+
 
 
 }

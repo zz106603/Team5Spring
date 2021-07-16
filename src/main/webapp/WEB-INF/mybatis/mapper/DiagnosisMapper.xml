@@ -217,14 +217,5 @@
 			#{pId}
 		)
 	</insert>
-	
-	<select id="userListAll" resultType="user" parameterType="String">
-		SELECT 
-			user_id as userId,
-			user_name as userName
-		FROM
-			user
-		WHERE
-			user_id != #{uid}
-	</select>
+
 </mapper>

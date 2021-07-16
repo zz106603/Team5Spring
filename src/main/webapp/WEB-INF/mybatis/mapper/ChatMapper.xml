@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.mycompany.webapp.dao.ChatDAO">
+ 
+   	
+	<select id="userListAll" resultType="user" parameterType="String">
+		SELECT 
+			user_id as userId,
+			user_name as userName,
+			authority
+		FROM
+			user
+		WHERE
+			user_id != #{uid}
+	</select>
+	
+	<insert id="addChat" parameterType="chat">
+		INSERT INTO chat
+			(sender, 
+			 message, 
+			 recipient, 
+			 message_date
+			)
+		VALUES(
+			#{sender},
+			#{message},
+			#{recipient},
+			#{messageDate}		
+			)
+	</insert>
+	
+	<select id="chatList" resultType="chat">
+		SELECT 
+			chat_id as chatId,
+			sender, 
+			message, 
+			recipient, 
+			message_date as messageDate
+		FROM 
+			chat
+		WHERE 
+			(sender = #{uId} and recipient = #{userId})
+            or
+            (sender = #{userId} and recipient = #{uId})
+		ORDER BY 
+			messageDate ASC
+	</select>
+    
+</mapper>

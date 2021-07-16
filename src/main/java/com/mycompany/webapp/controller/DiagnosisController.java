@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mycompany.webapp.dto.Chat;
 import com.mycompany.webapp.dto.Diagnosis;
 import com.mycompany.webapp.dto.DiagnosisInspection;
 import com.mycompany.webapp.dto.Inspection;
@@ -168,11 +169,6 @@ public class DiagnosisController {
 		
 	}
 	
-	@GetMapping("/userlist")
-	public List<User> getUserList(String uid){
-		List<User> list = diagnosisService.getUserList(uid);
-		
-		return list;
-	}
+	
 	
 }

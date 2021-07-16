@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.mycompany.webapp.dto.Chat;
 import com.mycompany.webapp.dto.Diagnosis;
 import com.mycompany.webapp.dto.DiagnosisInspection;
 import com.mycompany.webapp.dto.Inspection;
@@ -29,7 +30,7 @@ public interface DiagnosisDAO {
 	public int addInspection(DiagnosisInspection di);
 	public int addMedicine(MedicineDiagnosis md);
 	public List<DiagnosisInspection> inspectCompareList();
-	public List<User> userListAll(String uid);
+
 
 	
 	
