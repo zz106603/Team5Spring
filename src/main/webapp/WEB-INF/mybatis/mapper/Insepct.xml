@@ -23,7 +23,7 @@
 	</select> 
 	
 	  <select id="InspectList" resultType="diagnosisInspection" parameterType="String">
-	   select  patient_id as patientId, bundle_code as bundleCode, i_id as iId, i_name as iName, i_unit as iUnit, i_status as iStatus, inspector,d_id as dId,upper_limit as upperLimit,lower_limit as lowerLimit
+	   select  patient_id as patientId, bundle_code as bundleCode, i_id as iId, i_name as iName, i_unit as iUnit, i_status as iStatus, inspector,d_id as dId,upper_limit as upperLimit,lower_limit as lowerLimit,i_result as iResult
       from(select  di.patient_id as patient_id, 
                i.bundle_code as bundle_code, 
                     di.i_id as i_id, 
@@ -33,7 +33,8 @@
                     i.inspector as inspector,
                     di.d_id as d_id,
                     i.upper_limit as upper_limit,
-                    i.lower_limit as lower_limit 
+                    i.lower_limit as lower_limit,
+                    di.i_result as i_result
       from diagnosis_has_inspection di, inspection i
       where di.i_id = i.i_id and di.bundle_code = i.bundle_code) t
       where t.patient_id = #{pno} and t.d_id=#{did}
