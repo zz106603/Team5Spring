@@ -95,9 +95,6 @@ public class DiagnosisController {
 	@PostMapping("/pushdiagnosis")
 	@ResponseBody
 	public void add(@RequestBody Diagnosis diagnosis) {
-		
-		
-		
 		Calendar dDate  = Calendar.getInstance();
 		dDate.setTime(new Date());
 		Calendar iDate  = Calendar.getInstance();
@@ -125,7 +122,6 @@ public class DiagnosisController {
 		
 		String currentDid = diagnosisService.getCurrentDid();
 		
-		
 		for(int i=0; i<diagnosis.getInspectionList().size(); i++) {
 			DiagnosisInspection di = new DiagnosisInspection();
 			di.setiId(diagnosis.getInspectionList().get(i).getiId());
@@ -143,8 +139,6 @@ public class DiagnosisController {
 			md.setpId(diagnosis.getPatientId());
 			diagnosisService.addMedicine(md);
 		}
-		
-		
 	}
 	
 	@GetMapping("pastrecordilist")

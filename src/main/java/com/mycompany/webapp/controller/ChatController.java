@@ -22,7 +22,7 @@ import com.mycompany.webapp.service.ChatService;
 @RestController
 @RequestMapping("/chat")
 public class ChatController {
-	
+
 	@Autowired
 	private ChatService chatService;
 	@GetMapping("/userlist")
@@ -30,26 +30,18 @@ public class ChatController {
 		List<User> list = chatService.getUserList(uid);
 		return list;
 	}
-	
-	
-	
+
 	@PostMapping("/addchat")
 	@ResponseBody
 	public void addChat(@RequestBody Chat chat) {
-
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		chat.setMessageDate(df.format(new Date()));
-		
 		chatService.addChat(chat);
-		
 	}
-	
+
 	@GetMapping("/chatroom")
 	public List<Chat> getChatRoom(String uid, String userId){
-
 		List<Chat> list = chatService.getChatList(uid, userId);
-		
 		return list;
 	}
-	
 }
