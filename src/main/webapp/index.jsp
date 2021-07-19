@@ -5,4 +5,4 @@
 <%-- <%response.sendRedirect(application.getContextPath() + "/home");%> --%>
 
 <%-- 방법2 --%>
-<c:redirect url="/home"/>
+<c:redirect url="/boards/main"/>
