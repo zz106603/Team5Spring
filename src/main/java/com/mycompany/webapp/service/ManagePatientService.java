@@ -28,5 +28,14 @@ public class ManagePatientService {
 	public void updatePatient(Patient patient) {
 		managePatientDAO.updatePatient(patient);
 	}
+	
+	public String getLastId() {
+		String lastId = managePatientDAO.getLastId();
+		return lastId;
+	}
+	
+	public void registerPatient(Patient patientRegister) {
+		managePatientDAO.registerPatient(patientRegister);
+	}
 
 } 

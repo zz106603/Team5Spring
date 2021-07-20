@@ -39,17 +39,6 @@
 		SELECT count(*) FROM reception WHERE r_status='접수완료' and r_date=#{day}
 	</select>
 	
-	<insert id="registerPatient" parameterType="patient">
-		INSERT INTO patient 
-		(patient_id, patient_name, patient_age, patient_sex, patient_ssn1, patient_ssn2, patient_phone, patient_zip, address, address_detail) 
-		VALUES 
-		(#{patientId}, #{patientName}, #{patientAge}, #{patientSex}, #{patientSsn1}, #{patientSsn2}, #{patientPhone}, #{patientZip}, #{address}, #{addressDetail});
-	</insert>
-	
-	<select id="getLastId" resultType="string">
-		SELECT patient_id FROM patient ORDER BY patient_id DESC limit 1;
-	</select>
-	
 	<select id="countRday" parameterType="string" resultType="int" >
 		SELECT count(*) FROM reception WHERE r_date=#{day}
 	</select>

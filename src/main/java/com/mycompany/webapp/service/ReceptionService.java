@@ -39,15 +39,6 @@ public class ReceptionService {
 		return countComplete;
 	}
 
-	public void registerPatient(Patient patientRegister) {
-		receptionDAO.registerPatient(patientRegister);
-	}
-
-	public String getLastId() {
-		String lastId = receptionDAO.getLastId();
-		return lastId;
-	}
-
 	public int countRday(String day) {
 		int rDay = receptionDAO.countRday(day);
 		return rDay;		
