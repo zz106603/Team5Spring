@@ -33,6 +33,9 @@ public class MqttTemplate {
 		try {
 			MqttMessage message = new MqttMessage();
 			
+			logger.info(topic);
+			logger.info(content);
+			
 			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("topic", topic);
 			jsonObject.put("content", content);
