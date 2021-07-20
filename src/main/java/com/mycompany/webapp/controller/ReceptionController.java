@@ -41,23 +41,6 @@ public class ReceptionController {
 		return list;
 	}	
 	
-	@PostMapping("/registration")
-	@ResponseBody
-	public void registration(@RequestBody Patient patientRegister) {
-		String insertId = receptionService.getLastId();
-		int newId =  Integer.parseInt(insertId);
-		newId++;
-		String setId = Integer.toString(newId);
-		boolean flag = true;
-		while(flag) {
-			setId = 0+setId;
-			if(setId.length() == 5) {
-				flag = false;
-			}
-		}
-		patientRegister.setPatientId(setId);
-		receptionService.registerPatient(patientRegister);
-	}
 	
 	@DeleteMapping("/cancelReception")
   	public void delList(int cancelId) throws Exception{

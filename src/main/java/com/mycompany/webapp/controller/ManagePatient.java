@@ -40,4 +40,22 @@ public class ManagePatient {
 	public void updateReception(@RequestBody Patient patient) {
 		managePatientService.updatePatient(patient);
 	}
+	
+	@PostMapping("/registration")
+	@ResponseBody
+	public void registration(@RequestBody Patient patientRegister) {
+		String insertId = managePatientService.getLastId();
+		int newId =  Integer.parseInt(insertId);
+		newId++;
+		String setId = Integer.toString(newId);
+		boolean flag = true;
+		while(flag) {
+			setId = 0+setId;
+			if(setId.length() == 5) {
+				flag = false;
+			}
+		}
+		patientRegister.setPatientId(setId);
+		managePatientService.registerPatient(patientRegister);
+	}
 }

@@ -13,4 +13,6 @@ import com.mycompany.webapp.dto.Reception;
 public interface ManagePatientDAO {
 	public List<Patient> patientList();
 	public int updatePatient(Patient patient);
+	public String getLastId();
+	public void registerPatient(Patient patientRegister);
 }
