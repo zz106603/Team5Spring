@@ -22,7 +22,7 @@ import com.mycompany.webapp.service.ManagePatientService;
 
 @CrossOrigin(origins="*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/managePatient")
+@RequestMapping("/api/managePatient")
 public class ManagePatient {
 	private final Logger logger = LoggerFactory.getLogger(MainController.class);
 	

@@ -24,7 +24,7 @@ import com.mycompany.webapp.service.ReceptionUpdateService;
 
 @CrossOrigin(origins="*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/receptionUpdate")
+@RequestMapping("/api/receptionUpdate")
 public class ReceptionUpdateController {
 	private final Logger logger = LoggerFactory.getLogger(MainController.class);
 	

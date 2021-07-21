@@ -16,7 +16,7 @@ import com.mycompany.webapp.service.BoardService;
 
 @CrossOrigin(origins="*")
 @RestController
-@RequestMapping("/boards")
+@RequestMapping("/api/boards")
 public class MainController {
 	private final Logger logger = LoggerFactory.getLogger(MainController.class);
 	

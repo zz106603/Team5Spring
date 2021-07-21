@@ -31,7 +31,7 @@ import com.mycompany.webapp.service.InspectService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/inspection")
+@RequestMapping("/api/inspection")
 public class InspectController {
 	private final Logger logger = LoggerFactory.getLogger(InspectController.class);
 

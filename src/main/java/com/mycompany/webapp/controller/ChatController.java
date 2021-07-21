@@ -20,7 +20,7 @@ import com.mycompany.webapp.service.ChatService;
 
 @CrossOrigin(origins="*")
 @RestController
-@RequestMapping("/chat")
+@RequestMapping("/api/chat")
 public class ChatController {
 
 	@Autowired

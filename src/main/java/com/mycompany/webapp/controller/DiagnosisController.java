@@ -31,7 +31,7 @@ import com.mycompany.webapp.service.DiagnosisService;
 
 @CrossOrigin(origins="*")
 @RestController
-@RequestMapping("/diagnosis")
+@RequestMapping("/api/diagnosis")
 public class DiagnosisController {
 	private final Logger logger = LoggerFactory.getLogger(DiagnosisController.class);
 	
@@ -40,11 +40,6 @@ public class DiagnosisController {
 
 	@Autowired
 	private MqttTemplate mqttTemplate;
-	
-	@RequestMapping("/home")
-	public String test(){
-		return "home";	   
-	}
 
 	@GetMapping("/medicines")
 	public List<Medicine> medicineList(){

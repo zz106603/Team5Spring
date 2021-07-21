@@ -27,7 +27,7 @@ import com.mycompany.webapp.service.ReceptionService;
 
 @CrossOrigin(origins="*", allowedHeaders = "*", methods= {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RestController
-@RequestMapping("/reception")
+@RequestMapping("/api/reception")
 public class ReceptionController {
 	private final Logger logger = LoggerFactory.getLogger(ReceptionController.class);
 	

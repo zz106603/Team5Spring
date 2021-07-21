@@ -20,7 +20,7 @@ import com.mycompany.webapp.security.JwtUtil;
 import com.mycompany.webapp.service.AuthService;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 	@Resource(name="daoAuthenticationManager")
 	private AuthenticationManager authenticationManager;
